@@ -1,10 +1,3 @@
-# assignment
-
-Rename Vagrant-vm1, Vagrant-vm2 to Vagrantfile while making vagrant environment
-
-
-Vagrant file configuration example:
-
 Vagrant.configure(2) do |config|
 
   config.vm.box = "centos"
@@ -23,11 +16,9 @@ Vagrant.configure(2) do |config|
       yum install git vim wget -y
       wget https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chefdk-0.10.0-1.el6.x86_64.rpm
       rpm -ivh /vagrant/chefdk-0.10.0-1.el6.x86_64.rpm
-      mkdir ~/.chef
-      echo "cookbook_path [ '/home/vagrant/assignment' ]" > ~/.chef/knife.rb
       git clone https://github.com/krishna-xebia/assignment.git
       cd assignment
-      chef-client --local -j krishna-assignment-vm2.json
+      chef-client --local -j krishna-assignment.json
    SHELL
 end
 

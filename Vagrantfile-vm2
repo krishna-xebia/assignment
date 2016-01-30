@@ -1,10 +1,3 @@
-# assignment
-
-Rename Vagrant-vm1, Vagrant-vm2 to Vagrantfile while making vagrant environment
-
-
-Vagrant file configuration example:
-
 Vagrant.configure(2) do |config|
 
   config.vm.box = "centos"
