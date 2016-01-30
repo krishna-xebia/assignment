@@ -1,15 +1,15 @@
 server {
     listen       80;
-    server_name  server_name "<%= node['nginx']['server_name'] %>";
+    server_name  <%= node['nginx']['server_name'] %>;
 
     location / {
-        root "<%= node['nginx']['server_root'] %>";
+        root <%= node['nginx']['server_root'] %>;
         index  index.html index.htm;
     }
 
     error_page  404              /404.html;
     location = /404.html {
-        root   "<%= node['nginx']['server_root'] %>";
+        root   <%= node['nginx']['server_root'] %>;
     }
 }
 
