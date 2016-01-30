@@ -1,0 +1,8 @@
+{
+  "nginx": {
+          "server_name": "krishna.exampleg.com",
+          "server_root": "/usr/share/nginx/assignment"
+  },
+{
+  "run_list": [ "recipe[krishna-assignment-vm2]" ]
+}

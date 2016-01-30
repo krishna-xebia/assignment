@@ -1,0 +1,11 @@
+{
+  "nginx": {
+          "server_name": "krishna.exampleg.com",
+          "server_crt": "krishna.example.com.crt",
+          "server_key": "krishna.example.com.key",
+          "server_ca_crt": "krishna.example.com.ca.crt",
+          "lb_hostname": "192.168.33.11"
+  }, 
+  "run_list": [ "recipe[krishna-assignment]" ]
+}
+
