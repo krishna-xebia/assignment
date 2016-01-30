@@ -1,20 +1,28 @@
-#
-# Cookbook Name:: krishna-assignment
-# Spec:: default
-#
-# Copyright (c) 2016 The Authors, All Rights Reserved.
+require 'chefspec'
+describe 'krishna-assignment::default' do
+  let(:chef_run) { ChefSpec::SoloRunner.converge(described_recipe) }
 
-require 'spec_helper'
+  it 'installs nginx' do
+    expect(chef_run).to install_package('nginx')
+  end
+end
 
 describe 'krishna-assignment::default' do
-  context 'When all attributes are default, on an unspecified platform' do
-    let(:chef_run) do
-      runner = ChefSpec::ServerRunner.new
-      runner.converge(described_recipe)
-    end
+  let(:chef_run) do
+    ChefSpec::SoloRunner.new do |node|
+      node.set['nginx']['lb_hostname'] = '192.168.33.11'
+      node.set['nginx']['server_name'] = "krishna.example.com"
+      node.set['nginx']['server_crt'] = "krishna.example.com.crt"
+      node.set['nginx']['server_key'] = "krishna.example.com.key"
+      node.set['nginx']['server_ca_crt'] = "krishna.example.com.ca.crt"
+    end.converge(described_recipe)
+  end
+end
 
-    it 'converges successfully' do
-      expect { chef_run }.to_not raise_error
-    end
+describe 'krishna-assignment::default' do
+  let(:chef_run) { ChefSpec::SoloRunner.new }
+
+  before do
+   stub_search(:node, 'name:hello') { (ruby_code) }
   end
 end
