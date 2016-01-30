@@ -5,7 +5,7 @@
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 package 'nginx'
 
-directory '/etc/nginx/ssl/krishna.example.com/' do
+directory "/etc/nginx/ssl/#{node['nginx']['server_name']}" do
   owner 'root'
   group 'root'
   mode '0755'
@@ -17,24 +17,24 @@ template '/etc/nginx/conf.d/krishna-assignment.conf' do
         source 'krishna-assignment.example.com.conf.erb'
 end
 
-cookbook_file '/etc/nginx/ssl/krishna.example.com/krishna.example.com.crt' do
-  source 'krishna.example.com.crt'
+cookbook_file "/etc/nginx/ssl/#{node['nginx']['server_name']}/#{node['nginx']['server_crt']}" do
+  source "#{node['nginx']['server_crt']}"
   owner 'root'
   group 'root'
   mode '0644'
   action :create
 end
 
-cookbook_file '/etc/nginx/ssl/krishna.example.com/krishna.example.com.key' do
-  source 'krishna.example.com.key'
+cookbook_file "/etc/nginx/ssl/#{node['nginx']['server_name']}/#{node['nginx']['server_key']}" do
+  source "#{node['nginx']['server_key']}"
   owner 'root'
   group 'root'
   mode '0644'
   action :create
 end
 
-cookbook_file '/etc/nginx/ssl/krishna.example.com/krishna.example.com.ca.crt' do
-  source 'krishna.example.com.ca.crt'
+cookbook_file "/etc/nginx/ssl/#{node['nginx']['server_name']}/#{node['nginx']['server_ca_crt']}" do
+  source "#{node['nginx']['server_ca_crt']}"
   owner 'root'
   group 'root'
   mode '0644'
