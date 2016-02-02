@@ -4,15 +4,7 @@
 #
 # Copyright (c) 2016 The Authors, All Rights Reserved.
 
-case node['platform']
-when 'debian', 'ubuntu'
-  package 'nginx' do
-    action :install
-
-when 'redhat', 'centos', 'fedora'
-  package 'nginx' do
-    action :install
-end
+package 'nginx'
 
 
 directory "#{node['nginx']['server_root']}" do
